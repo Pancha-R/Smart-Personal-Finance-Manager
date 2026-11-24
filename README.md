@@ -1,3 +1,4 @@
 # Smart-Personal-Finance-Manager
 Everyone has to deal with money. Rent, food, transport, bills, school fees, and small daily purchases all come out of the same income, and by the end of the month it is hard to say where the money went. This project is about building a small application that makes that job easier, and it runs on a normal computer without needing the internet.
+
 Smart Personal Finance Manager (SPFM) is an offline desktop application that helps individuals track their money without needing internet access. Users can register securely (passwords are hashed with bcrypt), record income, expenses and savings, set savings goals and monthly budgets, and manage recurring payments with reminders. A dashboard shows the balance, money held in goals, and the available balance. Built with Python, CustomTkinter and SQLite, with all data kept on the user's own computer.
