@@ -31,7 +31,7 @@ class RecurringPage(ctk.CTkFrame):
 
     def _reload(self):
         top = self.winfo_toplevel()
-        top.after(10, lambda: top.show_page("Recurring"))
+        top.after(10, lambda: top.show_page("Receivables and Payables"))
 
     def _build_form(self):
         form = ctk.CTkFrame(self)

@@ -38,7 +38,7 @@ class DashboardHome(ctk.CTkFrame):
             self.grid_columnconfigure(c, uniform="cards", weight=1)
         self.grid_rowconfigure(2, weight=1)
 
-        # ----- goals -----
+        #goals
         box = ctk.CTkFrame(self, corner_radius=12)
         box.grid(row=2, column=0, columnspan=2, sticky="nsew", padx=8, pady=(16, 0))
         ctk.CTkLabel(box, text=f"My Goals  -  {CURRENCY} {s['goal_money']:,.2f} set aside",
@@ -55,7 +55,7 @@ class DashboardHome(ctk.CTkFrame):
                          text_color=COLOR_MUTED, wraplength=380, justify="left"
                          ).pack(padx=10, pady=20)
 
-        # ----- reminders & budget alerts -----
+        #reminders & budget alerts
         ReminderPanel(self, user, on_change=self._reload).grid(
             row=2, column=2, columnspan=2, sticky="nsew", padx=8, pady=(16, 0))
 
@@ -86,17 +86,17 @@ class Dashboard(ctk.CTk):
         self.grid_columnconfigure(1, weight=1)
         self.grid_rowconfigure(0, weight=1)
 
-        # ----- sidebar -----
+        #side bar
         sidebar = ctk.CTkFrame(self, width=200, corner_radius=0)
         sidebar.grid(row=0, column=0, sticky="nsew")
 
-        logo = load_logo(140)                 # 140 = logo width in pixels
+        logo = load_logo(140)                 #Logo    
         if logo:
             ctk.CTkLabel(sidebar, image=logo, text="").pack(pady=20)
         else:
             ctk.CTkLabel(sidebar, text="SPFM", font=("Arial", 22, "bold")).pack(pady=20)
 
-        # To add a screen later: write the page class, add one line here.
+        # if want to add a page
         self.pages = {
             "Dashboard": DashboardHome,
             "Transactions": TransactionsPage,
@@ -111,7 +111,7 @@ class Dashboard(ctk.CTk):
         ctk.CTkButton(sidebar, text="Log out", width=160, fg_color="gray",
                       command=self.logout).pack(side="bottom", pady=20, padx=15)
 
-        # ----- content area -----
+        #content area
         self.content = ctk.CTkFrame(self, fg_color="transparent")
         self.content.grid(row=0, column=1, sticky="nsew", padx=20, pady=20)
         self.content.grid_columnconfigure(0, weight=1)

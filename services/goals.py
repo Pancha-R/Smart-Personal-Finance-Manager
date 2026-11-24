@@ -1,9 +1,8 @@
 from datetime import datetime, date
 from database.db import get_connection
 
-# Money in a goal = everything saved into it - everything spent from it.
-# It is always calculated from the transactions table, so editing or deleting
-# a transaction can never leave the goal out of sync.
+# Money in a goal = everything saved into it - everything spent from it (can spent from Goal money since the money physically still available to use).
+# It is always calculated from the transactions table (editing or deleting)
 GOAL_SQL = """
     SELECT g.goal_id, g.name, g.target, g.deadline,
            COALESCE(SUM(CASE WHEN t.type='Saving'  THEN  t.amount

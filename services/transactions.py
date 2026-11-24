@@ -11,9 +11,9 @@ CATEGORIES = {
 }
 
 # How the three money figures relate:
-#   Balance   = Income - Expense                  (goal money still counted: it isn't spent)
+#   Balance   = Income - Expense (goal money still counted: it isn't spent)
 #   In goals  = Saving - Expense paid from goals
-#   Available = Balance - In goals                (what is free to spend)
+#   Available = Balance - In goals (what is free to spend)
 
 
 def validate_transaction(amount_text, date_text):
@@ -31,7 +31,7 @@ def validate_transaction(amount_text, date_text):
     return amount, None
 
 
-# ---------- safety checks (run inside the same DB transaction as the change) ----------
+#safety checks (run inside the same DB transaction as the change) 
 def _available(conn, user_id):
     r = conn.execute("""
         SELECT COALESCE(SUM(CASE WHEN type='Income' THEN amount END), 0) AS inc,
@@ -57,7 +57,7 @@ def _problem(conn, user_id, check_available):
 
 
 def _run(user_id, action, check_available=False):
-    """Applies `action(conn)`, verifies the result, and rolls back if it breaks a rule.
+    """Applies `action(conn)`, verifies the result, and rolls back if it breaks a rule and wrong data woudn't reach the db.
     Returns (ok, message)."""
     conn = get_connection()
     try:
@@ -91,7 +91,7 @@ def _prepare(conn, user_id, type_, category, goal_id):
     return category, goal_id, None
 
 
-# ---------- CRUD ----------
+#new transaction adder
 def add_transaction(user_id, type_, amount, category, date, note="", goal_id=None,
                     receipt_path=None):
     """Returns (ok, message)."""

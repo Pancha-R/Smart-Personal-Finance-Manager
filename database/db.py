@@ -113,7 +113,7 @@ def _ensure_transactions_table(conn):
         conn.execute(TRANSACTIONS_SQL.format(name="transactions"))
         return
     if "'Saving'" in row["sql"]:
-        return                                   # already up to date
+        return # already up to date
 
     # SQLite can't change a CHECK constraint, so rebuild the table.
     conn.commit()

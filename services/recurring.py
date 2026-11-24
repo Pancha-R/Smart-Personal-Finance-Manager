@@ -49,7 +49,7 @@ def delete_recurring(rec_id, user_id):
     conn.close()
 
 
-# ---------- date helpers ----------
+#date checker for 30 or 31
 def _due_date(ym, day):
     """Due date in month `ym`; day 31 in a 30-day month becomes the last day."""
     y, m = map(int, ym.split("-"))
@@ -79,7 +79,7 @@ def _load(user_id):
     return recs, logged
 
 
-# ---------- reminders ----------
+#reminders
 def get_pending(user_id, today=None):
     """Occurrences whose date has arrived but that the user hasn't answered yet
     ("did this transaction actually happen?"). Includes months missed while the app was closed."""
